@@ -1,33 +1,29 @@
-This README file contains information on the contents of the meta-display-image layer.
+# meta-display-image
+
+Yocto BSP layers for various board + display combinations composed by Display Image - <https://www.display-image.com>.
 
 Please see the corresponding sections below for details.
 
 Dependencies
 ============
+* URI: git://git.yoctoproject.org/poky
+  * branch: master
+  * revision: HEAD
 
-  URI: <first dependency>
-  branch: <branch name>
 
-  URI: <second dependency>
-  branch: <branch name>
-
-  .
-  .
-  .
 
 Patches
 =======
 
-Please submit any patches against the meta-display-image layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
+Please submit any patches against the meta-display-image layer to the the maintainers:
 
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+Maintainer: j-gre <jan.greiner@mnet-mail.de><jan.greiner@display-image.com>
 
 Table of Contents
 =================
 
   I. Adding the meta-display-image layer to your build
- II. Misc
+ II. Testing
 
 
 I. Adding the meta-display-image layer to your build
@@ -35,7 +31,7 @@ I. Adding the meta-display-image layer to your build
 
 Run 'bitbake-layers add-layer meta-display-image'
 
-II. Misc
+II. Testing
 ========
 
---- replace with specific information about the meta-display-image layer ---
+This BSP is being tested on a verdin imx8mm with the meta-toradex-torizon <https://github.com/toradex/meta-toradex-torizon> as a base layer.
