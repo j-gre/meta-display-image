@@ -27,7 +27,7 @@
 };
 
 &reg_mipi_phy {
-		status = "okay";
+	status = "okay";
 };
 
 &mipi_dsi {
