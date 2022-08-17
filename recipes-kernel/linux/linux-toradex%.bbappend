@@ -1,8 +1,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/linux-toradex:"
 
-# Prevent the use of in-tree defconfig
-unset KBUILD_DEFCONFIG
-
 CUSTOM_DEVICETREE = "verdin-imx8mm_am4001280_overlay.dts"
 
 SRC_URI += "\ 

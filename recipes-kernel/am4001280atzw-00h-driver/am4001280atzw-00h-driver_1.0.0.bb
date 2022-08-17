@@ -24,4 +24,3 @@ do_install () {
              install -m 0644 ${WORKDIR}/80-display-image.rules.conf ${D}/${sysconfdir}/udev/rules.d
      fi
 }
- 

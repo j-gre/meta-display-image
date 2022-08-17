@@ -21,8 +21,6 @@ IMAGE_INSTALL_append = " \
     packagegroup-basic \
     udev-extra-rules \
     ${ROOTFS_PKGMANAGE_PKGS} \
-    timestamp-service \
-    weston weston-init wayland-terminal-launch \
 "
 
 IMAGE_DEV_MANAGER   = "udev"
