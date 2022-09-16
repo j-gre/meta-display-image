@@ -1,0 +1,12 @@
+[Unit]
+Description=Display image AM-4001280ATZQW-00H MIPI-DSI driver loader
+Documentation=https://github.com/j-gre/meta-display-image
+Before=basic.target
+After=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/local/bin/di-load-am40001280.sh
+
+[Install]
+WantedBy=basic.target
