@@ -1,0 +1,42 @@
+From 1e5f1a0c1360bf1f707a7e4210edfd7507a48c64 Mon Sep 17 00:00:00 2001
+From: j-gre <jan.greiner@mnet-mail.de>
+Date: Thu, 8 Sep 2022 11:41:21 +0200
+Subject: [PATCH] Added PANEL_AMPIRE_AM4001280ATZW00H mipi dsi panel
+
+---
+ drivers/gpu/drm/panel/Kconfig  | 8 ++++++++
+ drivers/gpu/drm/panel/Makefile | 1 +
+ 2 files changed, 9 insertions(+)
+
+diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
+index f96e13a9974f..8199e3ccc6e6 100644
+--- a/drivers/gpu/drm/panel/Kconfig
++++ b/drivers/gpu/drm/panel/Kconfig
+@@ -7,6 +7,14 @@ config DRM_PANEL
+ 
+ menu "Display Panels"
+ 	depends on DRM && DRM_PANEL
++	
++config DRM_PANEL_AMPIRE_AM4001280ATZW00H
++	tristate "Ampire AM4001280ATZW-00H 400x1280 MIPI-DSI panels"
++	depends on OF
++	depends on DRM_MIPI_DSI
++	depends on BACKLIGHT_CLASS_DEVICE
++	help
++	  Say Y here if you want to enable support for Ampire AM4001280ATZW-00H series panels.
+ 
+ config DRM_PANEL_ARM_VERSATILE
+ 	tristate "ARM Versatile panel driver"
+diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
+index 6924b70adc78..eae21e3f0e46 100644
+--- a/drivers/gpu/drm/panel/Makefile
++++ b/drivers/gpu/drm/panel/Makefile
+@@ -1,4 +1,5 @@
+ # SPDX-License-Identifier: GPL-2.0
++obj-$(CONFIG_DRM_PANEL_AMPIRE_AM4001280ATZW00H) += panel-ampire-am4001280atzqw00h.o
+ obj-$(CONFIG_DRM_PANEL_ARM_VERSATILE) += panel-arm-versatile.o
+ obj-$(CONFIG_DRM_PANEL_LVDS) += panel-lvds.o
+ obj-$(CONFIG_DRM_PANEL_SIMPLE) += panel-simple.o
+-- 
+2.30.2
+

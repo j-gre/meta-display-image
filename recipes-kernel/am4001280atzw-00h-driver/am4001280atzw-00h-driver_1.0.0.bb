@@ -19,8 +19,8 @@ RPROVIDES_${PN} += "am4001280atzqw00h_driver"
 CONFFILES:${PN} = "${sysconfdir}/udev/rules.d/80-display-image.rules"
 
 do_install () {
-     if test -s ${WORKDIR}/80-display-image.rules; then
-             install -d ${D}/${sysconfdir}/udev/rules.d
-             install -m 0644 ${WORKDIR}/80-display-image.rules.conf ${D}/${sysconfdir}/udev/rules.d
-     fi
+     install -d ${D}/${sysconfdir}/udev/rules.d
+     install -m 0644 ${WORKDIR}/80-display-image.rules.conf ${D}/${sysconfdir}/udev/rules.d
+     
+     install -m 0711 ${WORKDIR}/di-load-am40001280 ${D}/${bindir}
 }

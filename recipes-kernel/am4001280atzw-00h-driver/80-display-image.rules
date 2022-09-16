@@ -1,0 +1,7 @@
+ACTION=="add"
+KERNEL=="32e10000.mipi_dsi.0"
+SUBSYSTEM=="mipi-dsi"
+DRIVER=="panel-ampire-am40001280"
+ATTR{suppliers}=="regulator.3"
+RUN+="/usr/local/bin/di-load-am40001280"
+
