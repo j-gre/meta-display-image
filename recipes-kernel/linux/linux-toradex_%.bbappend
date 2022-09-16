@@ -19,11 +19,11 @@ SRC_URI += "\
 do_configure_append() {
 
     # Panel driver copy operation
-    cp ${WORKDIR}/git-firmware/drivers/display/${CUSTOM_DRIVER}/${CUSTOM_DRIVER}.c ${S}/drivers/gpu/drm/panel
+    cp --no-preserve=ownership ${WORKDIR}/git-firmware/drivers/display/${CUSTOM_DRIVER}/${CUSTOM_DRIVER}.c ${S}/drivers/gpu/drm/panel
 
     # Devicetree copy operation
     # For arm32 bit devices
-    # cp ${WORKDIR}/git-firmware/overlays/toradex/${CUSTOM_DEVICETREE} ${S}/arch/arm/boot/dts
+    # cp --no-preserve=ownership ${WORKDIR}/git-firmware/overlays/toradex/${CUSTOM_DEVICETREE} ${S}/arch/arm/boot/dts
     # For arm64 bit freescale/NXP devices
-    cp ${WORKDIR}/git-firmware/overlays/toradex/${CUSTOM_DEVICETREE} ${S}/arch/arm64/boot/dts/freescale
+    cp --no-preserve=ownership ${WORKDIR}/git-firmware/overlays/toradex/${CUSTOM_DEVICETREE} ${S}/arch/arm64/boot/dts/freescale
 }
