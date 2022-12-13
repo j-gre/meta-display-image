@@ -8,10 +8,9 @@ SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES','systemd','${PN}','',
 SYSTEMD_SERVICE_${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','di-load-driver.service','',d)}"
 
 # Directory for all included files
-FILESEXTRAPATHS_prepend := "${THISDIR}/di-load-driver-0.1:"
+FILESPATH = "${THISDIR}/di-load-driver:"
 
-SUMMARY="Install a systemd service to load the 
-display-image-firmware/drivers/display/panel-ampire-am4001280atzqw00h/panel-ampire-am4001280atzqw00h.c display driver."
+SUMMARY="Install a systemd service to load the display-image-firmware/drivers/display/panel-ampire-am4001280atzqw00h/panel-ampire-am4001280atzqw00h.c display driver."
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
@@ -37,32 +36,25 @@ do_unpack[nostamp] = "1"
 
 # Specify installation location of the files on the target system (where D is the destination directory on the target system)
 do_install () {
-    echo "Trying to install systemd service for installing the am4001280atzw-00h-driver
+    echo "Trying to install systemd service for installing the am4001280atzw-00h-driver"
     if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
 		
-        # Create "/usr/local/bin" directory on the target if not present and install the bash script
-        install -d ${D}/usr/local/bin
-        install ${WORKDIR}/di-load-am40001280.sh ${D}/usr/local/bin/di-load-am40001280.sh
+        # Create "/usr/bin" directory on the target if not present and install the bash script
+        install -d ${D}/usr/bin
+        install -m 0755 ${WORKDIR}/di-load-am40001280.sh ${D}/usr/bin/di-load-am40001280.sh
         
         # Create "/etc/systemd/system" directory on the target if not present and install the systemd unit file
         install -d ${D}/${systemd_unitdir}/system
         install -m 0644 ${WORKDIR}/di-load-driver.service ${D}/${systemd_unitdir}/system
 
-        if [ test -e /file.txt && test -e /file2.txt ]; then
-            echo "Installation failed, files not found"
-        else
+        if [ test -e ${D}/usr/bin/di-load-am40001280.sh && test -e ${D}/${systemd_unitdir}/system/di-load-driver.service ]; then
             echo "Installation compleate"
+        else
+            echo "Installation failed, files not found"
         fi
     else
         echo "Installation failed due to systemd not being present in DISTRO_FEATURES!"
     fi
-
-    ###### Tried this before
-    # echo "Installing systemd service for am4001280atzw-00h-driver"
-    # install -m 0666 ${WORKDIR}/di-load-driver.service ${D}/etc/systemd/system/di-load-driver.service
-
-    # echo "Installing bind script for am4001280atzw-00h-driver"
-    # install -m 0755 ${WORKDIR}/di-load-am40001280.sh ${D}/usr/local/bin/di-load-am40001280.sh
 }
 
 # Give yocto a name for a package which bundles all the included files during the final build process.

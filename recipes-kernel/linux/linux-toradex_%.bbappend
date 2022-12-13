@@ -8,8 +8,7 @@ SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
 # Fetch the driver and overlay from a remote source, read the Makefile/Kconf patch which adds the driver and apply it with a kernel config fragment.
-
-SRC_URI += "\ 
+SRC_URI += " \
     git://github.com/j-gre/display-image-firmware.git;branch=main;protocol=https;destsuffix=./git-firmware \
     file://am4001280atzw00h.patch \
     file://am4001280atzw00h.cfg \
